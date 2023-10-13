@@ -4,7 +4,7 @@ from github import Github
 g = Github("token")
 
 # Get the VS Code repository object
-repo = g.get_repo("microsoft/vscode")
+repo = g.get_repo("elastic-search")
 
 # Get all the commits in the repository
 commits = repo.get_commits()
