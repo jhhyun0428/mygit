@@ -8,7 +8,7 @@ import time
 g = Github("token")
 
 # Get the VS Code repository object
-repo = g.get_repo("microsoft/vscode")
+repo = g.get_repo("elastic/elasticsearch")
 
 # Get all the issues in the repository
 issues = repo.get_issues(state="all") #open, all
