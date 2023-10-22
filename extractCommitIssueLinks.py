@@ -31,10 +31,9 @@ def print_commit_links(commit, repo):
         # Recognize the hash code in the text
         if issue is not None:
             bPull = is_pull(issue)
-            if bPull :
-                files = commit.files
-                for file in files:
-                    print(str(bPull) + ", " + str(issue_number) + ", " + "https://github.com/elastic/elasticsearch/commit/" + str(commit.sha) + ", " + str(file.filename))
+            files = commit.files
+            for file in files:
+                print(str(bPull) + ", " + str(issue_number) + ", " + "https://github.com/elastic/elasticsearch/commit/" + str(commit.sha) + ", " + str(file.filename))
             # fixed 된 url을 향후 수정해야 함
 
 
