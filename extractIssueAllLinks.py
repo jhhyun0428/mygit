@@ -30,7 +30,7 @@ original_stdout = sys.stdout
 i = 0
 with open("data.csv", "w", newline="", encoding='utf-8') as fileX:
     sys.stdout = fileX # Change the standard output to the file we created.
-    for commit in commits[:10]:
+    for commit in commits:
         try :
             if (i%10 ==0):
                 sys.sysout = original_stdout
