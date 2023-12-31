@@ -18,8 +18,8 @@ import com.github.javaparser.symbolsolver.resolution.typesolvers.JavaParserTypeS
 public class App01 {
 
 	public static void main(String[] args) throws IOException {
-		final Path SOURCE_ROOT_PATH = Path.of("C:\\Users\\user\\git\\elasticsearch");
-		final Path TARGET_PATH = Path.of("C:\\Users\\user\\git\\elasticsearch\\test\\framework\\src\\test\\java\\org\\elasticsearch\\cluster\\service\\FakeThreadPoolMasterServiceTests.java");
+		final Path SOURCE_ROOT_PATH = Path.of("/Users/seonahlee/git/elasticsearch/test/framework/src/main/java/org/elasticsearch/search");
+		final Path TARGET_PATH =      Path.of("/Users/seonahlee/git/elasticsearch/test/framework/src/test/java/org/elasticsearch/search/MockSearchServiceTests.java");
 
 		JavaSymbolSolver javaSymbolSolver = new JavaSymbolSolver(new JavaParserTypeSolver(SOURCE_ROOT_PATH));
 		StaticJavaParser.getParserConfiguration().setSymbolResolver(javaSymbolSolver);
@@ -59,7 +59,7 @@ public class App01 {
 				}
 				try {
 					System.out.println(md.resolve().getQualifiedSignature() + ", " 
-							+ methodCallExpr /*.resolve().getQualifiedSignature() */);
+							+ methodCallExpr.resolve().getQualifiedSignature() );
 				}
 				catch (UnsolvedSymbolException e) {
 					;
