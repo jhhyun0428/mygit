@@ -48,11 +48,12 @@ public class App
       
    }
    
-    private static List<Path> findJavaFiles(Path sourceRootPath) throws IOException {
-        return Files.walk(sourceRootPath)
-                .filter(Files::isRegularFile)
-                .filter(file -> file.toString().endsWith(".java"))
-                .collect(Collectors.toList());
+    private static List<Path> findJavaFiles(Path sourceRootPath) {
+//        return Files.walk(sourceRootPath)
+//                .filter(Files::isRegularFile)
+//                .filter(file -> file.toString().endsWith(".java"))
+//                .collect(Collectors.toList());
+    	return null;
     }
    
    public static void traceMethod (Path sourcepath, Path targetpath) throws IOException {
@@ -80,12 +81,13 @@ public class App
       List<MethodDeclaration> methodDeclarationList = new ArrayList<>();
       visitor.visit(cu, methodDeclarationList);
 
-      methodDeclarationList.forEach(md -> {
-         List<MethodCallExpr> methodCallExprList = md.findAll(MethodCallExpr.class);
-         methodCallExprList.forEach(methodCallExpr -> {
-            System.out.println(md.resolve().getQualifiedSignature() + ", " 
-                  + methodCallExpr.resolve().getQualifiedSignature());
-         });
-      });
+//      methodDeclarationList.forEach(md -> {
+//         List<MethodCallExpr> methodCallExprList = md.findAll(MethodCallExpr.class);
+//         methodCallExprList.forEach(methodCallExpr -> {
+//            System.out.println(md.resolve().getQualifiedSignature() + ", " 
+//                  + methodCallExpr.resolve().getQualifiedSignature());
+//         });
+//      });
+
    }
 }
