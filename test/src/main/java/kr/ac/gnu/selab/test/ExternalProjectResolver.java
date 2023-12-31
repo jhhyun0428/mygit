@@ -33,6 +33,12 @@ public class ExternalProjectResolver {
     	typeSolver.add(new JavaParserTypeSolver(Paths.get("/Users/seonahlee/git/elasticsearch/test/x-content/src/main/java")));
     	typeSolver.add(new JavaParserTypeSolver(Paths.get("/Users/seonahlee/git/elasticsearch/test/yaml-rest-runner/src/main/java")));
 
+    	typeSolver.add(new JavaParserTypeSolver(Paths.get("/Users/seonahlee/git/elasticsearch/benchmarks/src/main/java")));
+    	typeSolver.add(new JavaParserTypeSolver(Paths.get("/Users/seonahlee/git/elasticsearch/build-conventions/src/main/java")));
+    	
+    	
+    	
+
         // Configure JavaParser to use the TypeSolver
         StaticJavaParser.getParserConfiguration().setSymbolResolver(new JavaSymbolSolver(typeSolver));
 
