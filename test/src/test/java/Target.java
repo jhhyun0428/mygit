@@ -1,7 +1,5 @@
 import java.time.LocalDateTime;
 
-import symbolsolver.Foo;
-
 public class Target {
 	public int x;
 	private Foo foo = new Foo();
