@@ -19,7 +19,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 
-public class finding  {
+public class PathFinder  {
 	static String Caller = "";
 //	String Callee = "";
 	static List<String> file_find_paths = findJavaFiles("C:\\Users\\hyun\\Desktop\\elasticsearch-main");

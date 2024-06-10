@@ -17,7 +17,7 @@ import com.github.javaparser.symbolsolver.resolution.typesolvers.CombinedTypeSol
 import com.github.javaparser.symbolsolver.resolution.typesolvers.JavaParserTypeSolver;
 import com.github.javaparser.symbolsolver.resolution.typesolvers.ReflectionTypeSolver;
 
-import kr.ac.gnu.selab.test.finding.ClassCallVisitor;
+import kr.ac.gnu.selab.test.PathFinder.ClassCallVisitor;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -30,7 +30,7 @@ import java.util.Set;
 
   //
 
-public class parsing_method {
+public class MethodParser {
 	
 	static String Caller = "";
 	
