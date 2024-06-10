@@ -33,11 +33,16 @@ import java.util.Set;
 public class parsing_method {
 	
 	static String Caller = "";
-	static List<String> file_find_paths = findJavaFiles("C:\\Users\\hyun\\Desktop\\elasticsearch-main");
+	
+	
+	static List<String> file_find_paths = findJavaFiles("/Users/seonahlee/git/elasticsearch");
+	
+	//static List<String> file_find_paths = findJavaFiles("C:\\Users\\hyun\\Desktop\\elasticsearch-main");
 	
     public static void main(String[] args) {
-    	
-    	String startDirectory = "C:\\Users\\hyun\\Desktop\\elasticsearch-main";  // 시작할 디렉토리 경로 입력
+
+    	String startDirectory = "/Users/seonahlee/git/elasticsearch";  // 시작할 디렉토리 경로 입력
+//    	String startDirectory = "C:\\Users\\hyun\\Desktop\\elasticsearch-main";  // 시작할 디렉토리 경로 입력
         Set<String> javaPaths = new HashSet<>();
         findJavaFiles(new File(startDirectory), javaPaths);
         
@@ -53,7 +58,9 @@ public class parsing_method {
         
     	List<String> directories_test = new ArrayList<>();
     	
-    	directories_test.add("C:\\Users\\hyun\\Desktop\\elasticsearch-main\\test\\framework\\src\\main\\java");
+    	directories_test.add("/Users/seonahlee/git/elasticsearch/test/framework/src/main/java");
+    	
+//    	directories_test.add("C:\\Users\\hyun\\Desktop\\elasticsearch-main\\test\\framework\\src\\main\\java");
 
         StaticJavaParser.getParserConfiguration().setSymbolResolver(new JavaSymbolSolver(typeSolver));
 

@@ -153,7 +153,7 @@ public class finding  {
         
     }
     
-    private static class ClassCallVisitor extends VoidVisitorAdapter<Void> {
+    public static class ClassCallVisitor extends VoidVisitorAdapter<Void> {
     	
         @Override
         public void visit(MethodDeclaration n, Void arg) {
