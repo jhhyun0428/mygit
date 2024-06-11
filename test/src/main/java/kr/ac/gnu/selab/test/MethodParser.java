@@ -37,14 +37,14 @@ public class MethodParser {
 		
 		String startPath = path;
 		
-		methodParser.findJavaFiles(new File(startPath), javaPaths);
-
-		CombinedTypeSolver typeSolver = new CombinedTypeSolver();
-		typeSolver.add(new ReflectionTypeSolver());
+		methodParser.findJavaFolders(new File(startPath), javaPaths); // javaPath
 
 		// 결과 출력
-		List<String> sortedPaths = new ArrayList<>(javaPaths);
+		List<String> sortedPaths = new ArrayList<>(javaPaths); // javaPath, again
 		sortedPaths.sort(String::compareTo);
+		
+		CombinedTypeSolver typeSolver = new CombinedTypeSolver();
+		typeSolver.add(new ReflectionTypeSolver());
 		for (String path : sortedPaths) {
 			typeSolver.add(new JavaParserTypeSolver(Paths.get(path)));
 		}
@@ -57,7 +57,7 @@ public class MethodParser {
 
 
 		for (String test_file_paths : test_directories) {
-			List<String> file_paths =methodParser.findJavaFiles(test_file_paths);
+			List<String> file_paths =methodParser.findJavaFiles(test_file_paths); // jave files???
 			for (String file_path : file_paths) {
 				methodParser.findCalls(file_path);
 			}
@@ -66,7 +66,7 @@ public class MethodParser {
 
 	}
 
-	private void findJavaFiles(File directory, Set<String> javaPaths) {
+	public void findJavaFolders(File directory, Set<String> javaPaths) {
 		File[] files = directory.listFiles();
 		if (files == null) {
 			return;
@@ -74,25 +74,25 @@ public class MethodParser {
 
 		for (File file : files) {
 			if (file.isDirectory()) {
-				findJavaFiles(file, javaPaths);
+				findJavaFolders(file, javaPaths); // recursive
 			} else if (file.getName().endsWith(".java")) {
 				String pathToJavaFolder = this.findNearestJavaFolder(file.getParentFile());
 				if (pathToJavaFolder != null) {
-					javaPaths.add(pathToJavaFolder);
+					javaPaths.add(pathToJavaFolder); // add
 				}
 			}
 		}
 	}
 
 	public List<String> findJavaFiles(String folderPath) {
-		List<String> javaFiles = new ArrayList<>();
-		findJavaFilesInFolder(new File(folderPath), javaFiles);
-		return javaFiles;
+		List<String> javaPaths = new ArrayList<>();
+		findJavaFilesInFolder(new File(folderPath), javaPaths);
+		return javaPaths;
 	}
 
-	private void findJavaFilesInFolder(File folder, List<String> javaPaths) {
+	private void findJavaFilesInFolder(File directory, List<String> javaPaths) {
 		// 폴더 내의 모든 파일과 하위 폴더 확인
-		File[] files = folder.listFiles();
+		File[] files = directory.listFiles();
 		if (files == null) {
 			return;
 		}
