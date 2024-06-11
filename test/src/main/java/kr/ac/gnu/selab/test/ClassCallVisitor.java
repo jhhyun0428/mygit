@@ -17,11 +17,11 @@ import com.github.javaparser.resolution.UnsolvedSymbolException;
 
 public class ClassCallVisitor extends VoidVisitorAdapter<Void> {
 	
-	static List<String> file_find_paths ;
+	static List<String> file_paths ;
 	static String Caller = ""; // caller name will be set later
 	
 	ClassCallVisitor(MethodParser methodParser, String path) {
-		file_find_paths = methodParser.findJavaFiles(path);
+		file_paths = methodParser.findJavaFiles(path);
 	}
 
 	@Override
@@ -46,9 +46,9 @@ public class ClassCallVisitor extends VoidVisitorAdapter<Void> {
 			//                if (!qualifiedName.contains("java.lang"))
 			System.out.println(Caller + ", " + qualifiedName);
 			String Caller_f = buildJavaFileName(Caller);
-			System.out.println(Caller_f + " , " + findFilePath(file_find_paths, Caller_f));
+			System.out.println(Caller_f + " , " + findFilePath(file_paths, Caller_f));
 			String Callee_f = buildJavaFileName(qualifiedName);
-			System.out.println(Callee_f+ " , " + findFilePath(file_find_paths, Callee_f));
+			System.out.println(Callee_f+ " , " + findFilePath(file_paths, Callee_f));
 
 		} catch (Exception e) {
 			//                System.out.println("==> Could not resolve method call: " + n);

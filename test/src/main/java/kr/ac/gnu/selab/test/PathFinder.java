@@ -37,17 +37,17 @@ public class PathFinder  {
         );
     	
     	
-    	List<String> directories_test = new ArrayList<>();
+    	List<String> test_directories = new ArrayList<>();
     	
-    	directories_test.add(Paths.get(path, "test", "framework", "src", "main", "java").toString());
-    	directories_test.add(Paths.get(path, "test", "logger-usage", "src", "main", "java").toString());
-    	directories_test.add(Paths.get(path, "test", "metadata-extractor", "src", "main", "java").toString());
-    	directories_test.add(Paths.get(path, "test", "test-clusters", "src", "main", "java").toString());
-    	directories_test.add(Paths.get(path, "test", "x-content", "src", "main", "java").toString());
-    	directories_test.add(Paths.get(path, "test", "yaml-rest-runner", "src", "main", "java").toString());
+    	test_directories.add(Paths.get(path, "test", "framework", "src", "main", "java").toString());
+    	test_directories.add(Paths.get(path, "test", "logger-usage", "src", "main", "java").toString());
+    	test_directories.add(Paths.get(path, "test", "metadata-extractor", "src", "main", "java").toString());
+    	test_directories.add(Paths.get(path, "test", "test-clusters", "src", "main", "java").toString());
+    	test_directories.add(Paths.get(path, "test", "x-content", "src", "main", "java").toString());
+    	test_directories.add(Paths.get(path, "test", "yaml-rest-runner", "src", "main", "java").toString());
     	
     	
-    	for (String directory : directories_test) {
+    	for (String directory : test_directories) {
         	typeSolver.add(new JavaParserTypeSolver(Paths.get(directory)));
 
     	}
@@ -136,7 +136,7 @@ public class PathFinder  {
         StaticJavaParser.getParserConfiguration().setSymbolResolver(new JavaSymbolSolver(typeSolver));
 
         
-        for (String path_d : directories_test) {
+        for (String path_d : test_directories) {
         	
         	List<String> file_paths = findJavaFiles(path_d);
         	
