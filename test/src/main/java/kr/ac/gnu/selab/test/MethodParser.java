@@ -29,18 +29,18 @@ public class MethodParser {
 	
 	static String Caller = ""; // caller name will be set later
 	
-	static String Path = "/Users/seonahlee/git/elasticsearch";
-//	static String Path = "C:\\Users\\hyun\\Desktop\\elasticsearch-main\\";	
+	static String path = "/Users/seonahlee/git/elasticsearch";
+//	static String Path = "C:\\Users\\hyun\\Desktop\\elasticsearch-main";	
 	
 	static boolean Os = true; // false: windows, true: Mac
 	
-	static List<String> file_find_paths = findJavaFiles(Path);
+	static List<String> file_find_paths = findJavaFiles(path);
 	
 	//static List<String> file_find_paths = findJavaFiles("C:\\Users\\hyun\\Desktop\\elasticsearch-main");
 	
     public static void main(String[] args) {
 
-    	String startDirectory = Path;  // 시작할 디렉토리 경로 입력
+    	String startDirectory = path;  // 시작할 디렉토리 경로 입력
 //    	String startDirectory = "C:\\Users\\hyun\\Desktop\\elasticsearch-main";  // 시작할 디렉토리 경로 입력
         Set<String> javaPaths = new HashSet<>();
         findJavaFiles(new File(startDirectory), javaPaths);
@@ -57,7 +57,7 @@ public class MethodParser {
         
     	List<String> directories_test = new ArrayList<>();
     	
-    	directories_test.add(Path + File.separator + "test" + File.separator + "framework" + File.separator + "src" + File.separator + "main" + File.separator + "java");
+    	directories_test.add(path + File.separator + "test" + File.separator + "framework" + File.separator + "src" + File.separator + "main" + File.separator + "java");
     	
 //    	directories_test.add("C:\\Users\\hyun\\Desktop\\elasticsearch-main\\test\\framework\\src\\main\\java");
 

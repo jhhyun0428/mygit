@@ -23,10 +23,10 @@ public class PathFinder  {
 	static String Caller = ""; // will be set later
 //	String Callee = ""; // will be set later
 	
-	static String Path = "/Users/seonahlee/git/elasticsearch";
-//	static String Path = "C:\\Users\\hyun\\Desktop\\elasticsearch-main\\";	
+	static String path = "/Users/seonahlee/git/elasticsearch";
+//	static String Path = "C:\\Users\\hyun\\Desktop\\elasticsearch-main";	
 	
-	static List<String> file_find_paths = findJavaFiles("C:\\Users\\hyun\\Desktop\\elasticsearch-main");
+	static List<String> file_find_paths = findJavaFiles(path);
 	
     public static void main(String[] args) throws Exception {
         // Setup TypeSolver to include both the current project and the external project
@@ -39,12 +39,12 @@ public class PathFinder  {
     	
     	List<String> directories_test = new ArrayList<>();
     	
-    	directories_test.add("C:\\Users\\hyun\\Desktop\\elasticsearch-main\\test\\framework\\src\\main\\java");
-    	directories_test.add("C:\\Users\\hyun\\Desktop\\elasticsearch-main\\test\\logger-usage\\src\\main\\java");
-    	directories_test.add("C:\\Users\\hyun\\Desktop\\elasticsearch-main\\test\\metadata-extractor\\src\\main\\java");
-    	directories_test.add("C:\\Users\\hyun\\Desktop\\elasticsearch-main\\test\\test-clusters\\src\\main\\java");
-    	directories_test.add("C:\\Users\\hyun\\Desktop\\elasticsearch-main\\test\\x-content\\src\\main\\java");
-    	directories_test.add("C:\\Users\\hyun\\Desktop\\elasticsearch-main\\test\\yaml-rest-runner\\src\\main\\java");
+    	directories_test.add(Paths.get(path, "test", "framework", "src", "main", "java").toString());
+    	directories_test.add(Paths.get(path, "test", "logger-usage", "src", "main", "java").toString());
+    	directories_test.add(Paths.get(path, "test", "metadata-extractor", "src", "main", "java").toString());
+    	directories_test.add(Paths.get(path, "test", "test-clusters", "src", "main", "java").toString());
+    	directories_test.add(Paths.get(path, "test", "x-content", "src", "main", "java").toString());
+    	directories_test.add(Paths.get(path, "test", "yaml-rest-runner", "src", "main", "java").toString());
     	
     	
     	for (String directory : directories_test) {
@@ -52,84 +52,84 @@ public class PathFinder  {
 
     	}
 
-    	typeSolver.add(new JavaParserTypeSolver(Paths.get("C:\\Users\\hyun\\Desktop\\elasticsearch-main\\benchmarks\\src\\main\\java")));
-    	typeSolver.add(new JavaParserTypeSolver(Paths.get("C:\\Users\\hyun\\Desktop\\elasticsearch-main\\build-conventions\\src\\main\\java")));
-    	typeSolver.add(new JavaParserTypeSolver(Paths.get("C:\\Users\\hyun\\Desktop\\elasticsearch-main\\build-tools\\src\\main\\java")));
-    	typeSolver.add(new JavaParserTypeSolver(Paths.get("C:\\Users\\hyun\\Desktop\\elasticsearch-main\\build-tools-internal\\src\\main\\java")));
-    	typeSolver.add(new JavaParserTypeSolver(Paths.get("C:\\Users\\hyun\\Desktop\\elasticsearch-main\\client\\benchmark\\src\\main\\java")));
-    	typeSolver.add(new JavaParserTypeSolver(Paths.get("C:\\Users\\hyun\\Desktop\\elasticsearch-main\\client\\client-benchmark-noop-api-plugin\\src\\main\\java")));
-    	typeSolver.add(new JavaParserTypeSolver(Paths.get("C:\\Users\\hyun\\Desktop\\elasticsearch-main\\client\\rest-high-level\\src\\main\\java")));
-    	typeSolver.add(new JavaParserTypeSolver(Paths.get("C:\\Users\\hyun\\Desktop\\elasticsearch-main\\client\\rest\\src\\main\\java")));
-    	typeSolver.add(new JavaParserTypeSolver(Paths.get("C:\\Users\\hyun\\Desktop\\elasticsearch-main\\client\\sniffer\\src\\main\\java")));
-    	typeSolver.add(new JavaParserTypeSolver(Paths.get("C:\\Users\\hyun\\Desktop\\elasticsearch-main\\libs\\cli\\src\\main\\java")));
-    	typeSolver.add(new JavaParserTypeSolver(Paths.get("C:\\Users\\hyun\\Desktop\\elasticsearch-main\\libs\\core\\src\\main\\java")));
-    	typeSolver.add(new JavaParserTypeSolver(Paths.get("C:\\Users\\hyun\\Desktop\\elasticsearch-main\\libs\\dissect\\src\\main\\java")));
-    	typeSolver.add(new JavaParserTypeSolver(Paths.get("C:\\Users\\hyun\\Desktop\\elasticsearch-main\\libs\\geo\\src\\main\\java")));
-    	typeSolver.add(new JavaParserTypeSolver(Paths.get("C:\\Users\\hyun\\Desktop\\elasticsearch-main\\build-tools\\reaper\\src\\main\\java")));
-    	typeSolver.add(new JavaParserTypeSolver(Paths.get("C:\\Users\\hyun\\Desktop\\elasticsearch-main\\libs\\grok\\src\\main\\java")));
-    	typeSolver.add(new JavaParserTypeSolver(Paths.get("C:\\Users\\hyun\\Desktop\\elasticsearch-main\\libs\\h3\\src\\main\\java")));
-    	typeSolver.add(new JavaParserTypeSolver(Paths.get("C:\\Users\\hyun\\Desktop\\elasticsearch-main\\libs\\logging\\src\\main\\java")));
-    	typeSolver.add(new JavaParserTypeSolver(Paths.get("C:\\Users\\hyun\\Desktop\\elasticsearch-main\\libs\\lz4\\src\\main\\java")));
-    	typeSolver.add(new JavaParserTypeSolver(Paths.get("C:\\Users\\hyun\\Desktop\\elasticsearch-main\\libs\\plugin-analysis-api\\src\\main\\java")));
-    	typeSolver.add(new JavaParserTypeSolver(Paths.get("C:\\Users\\hyun\\Desktop\\elasticsearch-main\\libs\\plugin-api\\src\\main\\java")));
-    	typeSolver.add(new JavaParserTypeSolver(Paths.get("C:\\Users\\hyun\\Desktop\\elasticsearch-main\\libs\\plugin-classloader\\src\\main\\java")));
-    	typeSolver.add(new JavaParserTypeSolver(Paths.get("C:\\Users\\hyun\\Desktop\\elasticsearch-main\\libs\\plugin-scanner\\src\\main\\java")));
-    	typeSolver.add(new JavaParserTypeSolver(Paths.get("C:\\Users\\hyun\\Desktop\\elasticsearch-main\\libs\\preallocate\\src\\main\\java")));
-    	typeSolver.add(new JavaParserTypeSolver(Paths.get("C:\\Users\\hyun\\Desktop\\elasticsearch-main\\libs\\secure-sm\\src\\main\\java")));
-    	typeSolver.add(new JavaParserTypeSolver(Paths.get("C:\\Users\\hyun\\Desktop\\elasticsearch-main\\libs\\ssl-config\\src\\main\\java")));
-    	typeSolver.add(new JavaParserTypeSolver(Paths.get("C:\\Users\\hyun\\Desktop\\elasticsearch-main\\libs\\tdigest\\src\\main\\java")));
-    	typeSolver.add(new JavaParserTypeSolver(Paths.get("C:\\Users\\hyun\\Desktop\\elasticsearch-main\\libs\\x-content\\src\\main\\java")));
-    	typeSolver.add(new JavaParserTypeSolver(Paths.get("C:\\Users\\hyun\\Desktop\\elasticsearch-main\\modules\\aggregations\\src\\main\\java")));
-    	typeSolver.add(new JavaParserTypeSolver(Paths.get("C:\\Users\\hyun\\Desktop\\elasticsearch-main\\modules\\analysis-common\\src\\main\\java")));
-    	typeSolver.add(new JavaParserTypeSolver(Paths.get("C:\\Users\\hyun\\Desktop\\elasticsearch-main\\modules\\apm\\src\\main\\java")));
-    	typeSolver.add(new JavaParserTypeSolver(Paths.get("C:\\Users\\hyun\\Desktop\\elasticsearch-main\\modules\\data-streams\\src\\main\\java")));
-    	typeSolver.add(new JavaParserTypeSolver(Paths.get("C:\\Users\\hyun\\Desktop\\elasticsearch-main\\modules\\health-shards-availability\\src\\main\\java")));
-    	typeSolver.add(new JavaParserTypeSolver(Paths.get("C:\\Users\\hyun\\Desktop\\elasticsearch-main\\modules\\ingest-attachment\\src\\main\\java")));
-    	typeSolver.add(new JavaParserTypeSolver(Paths.get("C:\\Users\\hyun\\Desktop\\elasticsearch-main\\modules\\ingest-common\\src\\main\\java")));
-    	typeSolver.add(new JavaParserTypeSolver(Paths.get("C:\\Users\\hyun\\Desktop\\elasticsearch-main\\modules\\ingest-geoip\\src\\main\\java")));
-    	typeSolver.add(new JavaParserTypeSolver(Paths.get("C:\\Users\\hyun\\Desktop\\elasticsearch-main\\modules\\ingest-user-agent\\src\\main\\java")));
-    	typeSolver.add(new JavaParserTypeSolver(Paths.get("C:\\Users\\hyun\\Desktop\\elasticsearch-main\\modules\\kibana\\src\\main\\java")));
-    	typeSolver.add(new JavaParserTypeSolver(Paths.get("C:\\Users\\hyun\\Desktop\\elasticsearch-main\\modules\\lang-expression\\src\\main\\java")));
-    	typeSolver.add(new JavaParserTypeSolver(Paths.get("C:\\Users\\hyun\\Desktop\\elasticsearch-main\\modules\\lang-mustache\\src\\main\\java")));
-    	typeSolver.add(new JavaParserTypeSolver(Paths.get("C:\\Users\\hyun\\Desktop\\elasticsearch-main\\modules\\lang-painless\\src\\main\\java")));
-    	typeSolver.add(new JavaParserTypeSolver(Paths.get("C:\\Users\\hyun\\Desktop\\elasticsearch-main\\modules\\legacy-geo\\src\\main\\java")));
-    	typeSolver.add(new JavaParserTypeSolver(Paths.get("C:\\Users\\hyun\\Desktop\\elasticsearch-main\\modules\\mapper-extras\\src\\main\\java")));
-    	typeSolver.add(new JavaParserTypeSolver(Paths.get("C:\\Users\\hyun\\Desktop\\elasticsearch-main\\modules\\parent-join\\src\\main\\java")));
-    	typeSolver.add(new JavaParserTypeSolver(Paths.get("C:\\Users\\hyun\\Desktop\\elasticsearch-main\\modules\\percolator\\src\\main\\java")));
-    	typeSolver.add(new JavaParserTypeSolver(Paths.get("C:\\Users\\hyun\\Desktop\\elasticsearch-main\\modules\\rank-eval\\src\\main\\java")));
-    	typeSolver.add(new JavaParserTypeSolver(Paths.get("C:\\Users\\hyun\\Desktop\\elasticsearch-main\\modules\\reindex\\src\\main\\java")));
-    	typeSolver.add(new JavaParserTypeSolver(Paths.get("C:\\Users\\hyun\\Desktop\\elasticsearch-main\\modules\\repository-azure\\src\\main\\java")));
-    	typeSolver.add(new JavaParserTypeSolver(Paths.get("C:\\Users\\hyun\\Desktop\\elasticsearch-main\\modules\\repository-gcs\\src\\main\\java")));
-    	typeSolver.add(new JavaParserTypeSolver(Paths.get("C:\\Users\\hyun\\Desktop\\elasticsearch-main\\modules\\repository-s3\\src\\main\\java")));
-    	typeSolver.add(new JavaParserTypeSolver(Paths.get("C:\\Users\\hyun\\Desktop\\elasticsearch-main\\modules\\repository-url\\src\\main\\java")));
-    	typeSolver.add(new JavaParserTypeSolver(Paths.get("C:\\Users\\hyun\\Desktop\\elasticsearch-main\\modules\\rest-root\\src\\main\\java")));
-    	typeSolver.add(new JavaParserTypeSolver(Paths.get("C:\\Users\\hyun\\Desktop\\elasticsearch-main\\modules\\runtime-fields-common\\src\\main\\java")));
-    	typeSolver.add(new JavaParserTypeSolver(Paths.get("C:\\Users\\hyun\\Desktop\\elasticsearch-main\\modules\\systemd\\src\\main\\java")));
-    	typeSolver.add(new JavaParserTypeSolver(Paths.get("C:\\Users\\hyun\\Desktop\\elasticsearch-main\\modules\\transport-netty4\\src\\main\\java")));
-    	typeSolver.add(new JavaParserTypeSolver(Paths.get("C:\\Users\\hyun\\Desktop\\elasticsearch-main\\plugins\\analysis-icu\\src\\main\\java")));
-    	typeSolver.add(new JavaParserTypeSolver(Paths.get("C:\\Users\\hyun\\Desktop\\elasticsearch-main\\plugins\\analysis-kuromoji\\src\\main\\java")));
-    	typeSolver.add(new JavaParserTypeSolver(Paths.get("C:\\Users\\hyun\\Desktop\\elasticsearch-main\\plugins\\analysis-nori\\src\\main\\java")));
-    	typeSolver.add(new JavaParserTypeSolver(Paths.get("C:\\Users\\hyun\\Desktop\\elasticsearch-main\\plugins\\analysis-phonetic\\src\\main\\java")));
-    	typeSolver.add(new JavaParserTypeSolver(Paths.get("C:\\Users\\hyun\\Desktop\\elasticsearch-main\\plugins\\analysis-smartcn\\src\\main\\java")));
-    	typeSolver.add(new JavaParserTypeSolver(Paths.get("C:\\Users\\hyun\\Desktop\\elasticsearch-main\\plugins\\analysis-stempel\\src\\main\\java")));
-    	typeSolver.add(new JavaParserTypeSolver(Paths.get("C:\\Users\\hyun\\Desktop\\elasticsearch-main\\plugins\\analysis-ukrainian\\src\\main\\java")));
-    	typeSolver.add(new JavaParserTypeSolver(Paths.get("C:\\Users\\hyun\\Desktop\\elasticsearch-main\\plugins\\discovery-azure-classic\\src\\main\\java")));
-    	typeSolver.add(new JavaParserTypeSolver(Paths.get("C:\\Users\\hyun\\Desktop\\elasticsearch-main\\plugins\\discovery-ec2\\src\\main\\java")));
-    	typeSolver.add(new JavaParserTypeSolver(Paths.get("C:\\Users\\hyun\\Desktop\\elasticsearch-main\\plugins\\discovery-gce\\src\\main\\java")));
-    	typeSolver.add(new JavaParserTypeSolver(Paths.get("C:\\Users\\hyun\\Desktop\\elasticsearch-main\\plugins\\examples\\custom-settings\\src\\main\\java")));
-    	typeSolver.add(new JavaParserTypeSolver(Paths.get("C:\\Users\\hyun\\Desktop\\elasticsearch-main\\plugins\\examples\\custom-significance-heuristic\\src\\main\\java")));
-    	typeSolver.add(new JavaParserTypeSolver(Paths.get("C:\\Users\\hyun\\Desktop\\elasticsearch-main\\plugins\\examples\\custom-suggester\\src\\main\\java")));
-    	typeSolver.add(new JavaParserTypeSolver(Paths.get("C:\\Users\\hyun\\Desktop\\elasticsearch-main\\plugins\\examples\\painless-whitelist\\src\\main\\java")));
-    	typeSolver.add(new JavaParserTypeSolver(Paths.get("C:\\Users\\hyun\\Desktop\\elasticsearch-main\\plugins\\examples\\rescore\\src\\main\\java")));
-    	typeSolver.add(new JavaParserTypeSolver(Paths.get("C:\\Users\\hyun\\Desktop\\elasticsearch-main\\plugins\\examples\\rest-handler\\src\\main\\java")));
-    	typeSolver.add(new JavaParserTypeSolver(Paths.get("C:\\Users\\hyun\\Desktop\\elasticsearch-main\\plugins\\examples\\script-expert-scoring\\src\\main\\java")));
-    	typeSolver.add(new JavaParserTypeSolver(Paths.get("C:\\Users\\hyun\\Desktop\\elasticsearch-main\\plugins\\examples\\security-authorization-engine\\src\\main\\java")));
-    	typeSolver.add(new JavaParserTypeSolver(Paths.get("C:\\Users\\hyun\\Desktop\\elasticsearch-main\\plugins\\examples\\stable-analysis\\src\\main\\java")));
-    	typeSolver.add(new JavaParserTypeSolver(Paths.get("C:\\Users\\hyun\\Desktop\\elasticsearch-main\\plugins\\mapper-annotated-text\\src\\main\\java")));
-    	typeSolver.add(new JavaParserTypeSolver(Paths.get("C:\\Users\\hyun\\Desktop\\elasticsearch-main\\plugins\\mapper-murmur3\\src\\main\\java")));
-    	typeSolver.add(new JavaParserTypeSolver(Paths.get("C:\\Users\\hyun\\Desktop\\elasticsearch-main\\plugins\\mapper-size\\src\\main\\java")));
-    	typeSolver.add(new JavaParserTypeSolver(Paths.get("C:\\Users\\hyun\\Desktop\\elasticsearch-main\\plugins\\repository-hdfs\\src\\main\\java")));
-    	typeSolver.add(new JavaParserTypeSolver(Paths.get("C:\\Users\\hyun\\Desktop\\elasticsearch-main\\plugins\\store-smb\\src\\main\\java")));
+    	typeSolver.add(new JavaParserTypeSolver(Paths.get(path, "benchmarks", "src", "main", "java")));
+    	typeSolver.add(new JavaParserTypeSolver(Paths.get(path, "build-conventions", "src", "main", "java")));
+    	typeSolver.add(new JavaParserTypeSolver(Paths.get(path, "build-tools", "src", "main", "java")));
+    	typeSolver.add(new JavaParserTypeSolver(Paths.get(path, "build-tools-internal", "src", "main", "java")));
+    	typeSolver.add(new JavaParserTypeSolver(Paths.get(path, "client", "benchmark", "src", "main", "java")));
+    	typeSolver.add(new JavaParserTypeSolver(Paths.get(path, "client", "client-benchmark-noop-api-plugin", "src", "main", "java")));
+    	typeSolver.add(new JavaParserTypeSolver(Paths.get(path, "client", "rest-high-level", "src", "main", "java")));
+    	typeSolver.add(new JavaParserTypeSolver(Paths.get(path, "client", "rest", "src", "main", "java")));
+    	typeSolver.add(new JavaParserTypeSolver(Paths.get(path, "client", "sniffer", "src", "main", "java")));
+    	typeSolver.add(new JavaParserTypeSolver(Paths.get(path, "libs", "cli", "src", "main", "java")));
+    	typeSolver.add(new JavaParserTypeSolver(Paths.get(path, "libs", "core", "src", "main", "java")));
+    	typeSolver.add(new JavaParserTypeSolver(Paths.get(path, "libs", "dissect", "src", "main", "java")));
+    	typeSolver.add(new JavaParserTypeSolver(Paths.get(path, "libs", "geo", "src", "main", "java")));
+    	typeSolver.add(new JavaParserTypeSolver(Paths.get(path, "build-tools", "reaper", "src", "main", "java")));
+    	typeSolver.add(new JavaParserTypeSolver(Paths.get(path, "libs", "grok", "src", "main", "java")));
+    	typeSolver.add(new JavaParserTypeSolver(Paths.get(path, "libs", "h3", "src", "main", "java")));
+    	typeSolver.add(new JavaParserTypeSolver(Paths.get(path, "libs", "logging", "src", "main", "java")));
+    	typeSolver.add(new JavaParserTypeSolver(Paths.get(path, "libs", "lz4", "src", "main", "java")));
+    	typeSolver.add(new JavaParserTypeSolver(Paths.get(path, "libs", "plugin-analysis-api", "src", "main", "java")));
+    	typeSolver.add(new JavaParserTypeSolver(Paths.get(path, "libs", "plugin-api", "src", "main", "java")));
+    	typeSolver.add(new JavaParserTypeSolver(Paths.get(path, "libs", "plugin-classloader", "src", "main", "java")));
+    	typeSolver.add(new JavaParserTypeSolver(Paths.get(path, "libs", "plugin-scanner", "src", "main", "java")));
+    	typeSolver.add(new JavaParserTypeSolver(Paths.get(path, "libs", "preallocate", "src", "main", "java")));
+    	typeSolver.add(new JavaParserTypeSolver(Paths.get(path, "libs", "secure-sm", "src", "main", "java")));
+    	typeSolver.add(new JavaParserTypeSolver(Paths.get(path, "libs", "ssl-config", "src", "main", "java")));
+    	typeSolver.add(new JavaParserTypeSolver(Paths.get(path, "libs", "tdigest", "src", "main", "java")));
+    	typeSolver.add(new JavaParserTypeSolver(Paths.get(path, "libs", "x-content", "src", "main", "java")));
+    	typeSolver.add(new JavaParserTypeSolver(Paths.get(path, "modules", "aggregations", "src", "main", "java")));
+    	typeSolver.add(new JavaParserTypeSolver(Paths.get(path, "modules", "analysis-common", "src", "main", "java")));
+    	typeSolver.add(new JavaParserTypeSolver(Paths.get(path, "modules", "apm", "src", "main", "java")));
+    	typeSolver.add(new JavaParserTypeSolver(Paths.get(path, "modules", "data-streams", "src", "main", "java")));
+    	typeSolver.add(new JavaParserTypeSolver(Paths.get(path, "modules", "health-shards-availability", "src", "main", "java")));
+    	typeSolver.add(new JavaParserTypeSolver(Paths.get(path, "modules", "ingest-attachment", "src", "main", "java")));
+    	typeSolver.add(new JavaParserTypeSolver(Paths.get(path, "modules", "ingest-common", "src", "main", "java")));
+    	typeSolver.add(new JavaParserTypeSolver(Paths.get(path, "modules", "ingest-geoip", "src", "main", "java")));
+    	typeSolver.add(new JavaParserTypeSolver(Paths.get(path, "modules", "ingest-user-agent", "src", "main", "java")));
+    	typeSolver.add(new JavaParserTypeSolver(Paths.get(path, "modules", "kibana", "src", "main", "java")));
+    	typeSolver.add(new JavaParserTypeSolver(Paths.get(path, "modules", "lang-expression", "src", "main", "java")));
+    	typeSolver.add(new JavaParserTypeSolver(Paths.get(path, "modules", "lang-mustache", "src", "main", "java")));
+    	typeSolver.add(new JavaParserTypeSolver(Paths.get(path, "modules", "lang-painless", "src", "main", "java")));
+    	typeSolver.add(new JavaParserTypeSolver(Paths.get(path, "modules", "legacy-geo", "src", "main", "java")));
+    	typeSolver.add(new JavaParserTypeSolver(Paths.get(path, "modules", "mapper-extras", "src", "main", "java")));
+    	typeSolver.add(new JavaParserTypeSolver(Paths.get(path, "modules", "parent-join", "src", "main", "java")));
+    	typeSolver.add(new JavaParserTypeSolver(Paths.get(path, "modules", "percolator", "src", "main", "java")));
+    	typeSolver.add(new JavaParserTypeSolver(Paths.get(path, "modules", "rank-eval", "src", "main", "java")));
+    	typeSolver.add(new JavaParserTypeSolver(Paths.get(path, "modules", "reindex", "src", "main", "java")));
+    	typeSolver.add(new JavaParserTypeSolver(Paths.get(path, "modules", "repository-azure", "src", "main", "java")));
+    	typeSolver.add(new JavaParserTypeSolver(Paths.get(path, "modules", "repository-gcs", "src", "main", "java")));
+    	typeSolver.add(new JavaParserTypeSolver(Paths.get(path, "modules", "repository-s3", "src", "main", "java")));
+    	typeSolver.add(new JavaParserTypeSolver(Paths.get(path, "modules", "repository-url", "src", "main", "java")));
+    	typeSolver.add(new JavaParserTypeSolver(Paths.get(path, "modules", "rest-root", "src", "main", "java")));
+    	typeSolver.add(new JavaParserTypeSolver(Paths.get(path, "modules", "runtime-fields-common", "src", "main", "java")));
+    	typeSolver.add(new JavaParserTypeSolver(Paths.get(path, "modules", "systemd", "src", "main", "java")));
+    	typeSolver.add(new JavaParserTypeSolver(Paths.get(path, "modules", "transport-netty4", "src", "main", "java")));
+    	typeSolver.add(new JavaParserTypeSolver(Paths.get(path, "plugins", "analysis-icu", "src", "main", "java")));
+    	typeSolver.add(new JavaParserTypeSolver(Paths.get(path, "plugins", "analysis-kuromoji", "src", "main", "java")));
+    	typeSolver.add(new JavaParserTypeSolver(Paths.get(path, "plugins", "analysis-nori", "src", "main", "java")));
+    	typeSolver.add(new JavaParserTypeSolver(Paths.get(path, "plugins", "analysis-phonetic", "src", "main", "java")));
+    	typeSolver.add(new JavaParserTypeSolver(Paths.get(path, "plugins", "analysis-smartcn", "src", "main", "java")));
+    	typeSolver.add(new JavaParserTypeSolver(Paths.get(path, "plugins", "analysis-stempel", "src", "main", "java")));
+    	typeSolver.add(new JavaParserTypeSolver(Paths.get(path, "plugins", "analysis-ukrainian", "src", "main", "java")));
+    	typeSolver.add(new JavaParserTypeSolver(Paths.get(path, "plugins", "discovery-azure-classic", "src", "main", "java")));
+    	typeSolver.add(new JavaParserTypeSolver(Paths.get(path, "plugins", "discovery-ec2", "src", "main", "java")));
+    	typeSolver.add(new JavaParserTypeSolver(Paths.get(path, "plugins", "discovery-gce", "src", "main", "java")));
+    	typeSolver.add(new JavaParserTypeSolver(Paths.get(path, "plugins", "examples", "custom-settings", "src", "main", "java")));
+    	typeSolver.add(new JavaParserTypeSolver(Paths.get(path, "plugins", "examples", "custom-significance-heuristic", "src", "main", "java")));
+    	typeSolver.add(new JavaParserTypeSolver(Paths.get(path, "plugins", "examples", "custom-suggester", "src", "main", "java")));
+    	typeSolver.add(new JavaParserTypeSolver(Paths.get(path, "plugins", "examples", "painless-whitelist", "src", "main", "java")));
+    	typeSolver.add(new JavaParserTypeSolver(Paths.get(path, "plugins", "examples", "rescore", "src", "main", "java")));
+    	typeSolver.add(new JavaParserTypeSolver(Paths.get(path, "plugins", "examples", "rest-handler", "src", "main", "java")));
+    	typeSolver.add(new JavaParserTypeSolver(Paths.get(path, "plugins", "examples", "script-expert-scoring", "src", "main", "java")));
+    	typeSolver.add(new JavaParserTypeSolver(Paths.get(path, "plugins", "examples", "security-authorization-engine", "src", "main", "java")));
+    	typeSolver.add(new JavaParserTypeSolver(Paths.get(path, "plugins", "examples", "stable-analysis", "src", "main", "java")));
+    	typeSolver.add(new JavaParserTypeSolver(Paths.get(path, "plugins", "mapper-annotated-text", "src", "main", "java")));
+    	typeSolver.add(new JavaParserTypeSolver(Paths.get(path, "plugins", "mapper-murmur3", "src", "main", "java")));
+    	typeSolver.add(new JavaParserTypeSolver(Paths.get(path, "plugins", "mapper-size", "src", "main", "java")));
+    	typeSolver.add(new JavaParserTypeSolver(Paths.get(path, "plugins", "repository-hdfs", "src", "main", "java")));
+    	typeSolver.add(new JavaParserTypeSolver(Paths.get(path, "plugins", "store-smb", "src", "main", "java")));
 
 
 
