@@ -132,9 +132,6 @@ public class PathFinder  {
     	typeSolver.add(new JavaParserTypeSolver(Paths.get(path, "plugins", "store-smb", "src", "main", "java")));
 
 
-
-
-
         // Configure JavaParser to use the TypeSolver
         StaticJavaParser.getParserConfiguration().setSymbolResolver(new JavaSymbolSolver(typeSolver));
 
