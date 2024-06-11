@@ -20,8 +20,12 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 
 public class PathFinder  {
-	static String Caller = "";
-//	String Callee = "";
+	static String Caller = ""; // will be set later
+//	String Callee = ""; // will be set later
+	
+	static String Path = "/Users/seonahlee/git/elasticsearch";
+//	static String Path = "C:\\Users\\hyun\\Desktop\\elasticsearch-main\\";	
+	
 	static List<String> file_find_paths = findJavaFiles("C:\\Users\\hyun\\Desktop\\elasticsearch-main");
 	
     public static void main(String[] args) throws Exception {
