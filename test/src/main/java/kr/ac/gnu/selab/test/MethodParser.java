@@ -75,42 +75,6 @@ public class MethodParser {
 			}
 
 		}
-		/*
-    	List<String> method_list = new ArrayList<>();
-
-
-        String filePath = "C:\\Users\\hyun\\Desktop\\elasticsearch-8.11.3\\build-tools\\src\\main\\java\\org\\elasticsearch\\gradle\\AbstractLazyPropertyCollection.java"; // 여기에 분석하고 싶은 파일의 경로를 지정하세요.
-
-
-        JavaParser parser = new JavaParser(new ParserConfiguration()
-            .setSymbolResolver(new JavaSymbolSolver(new ReflectionTypeSolver())));
-
-        try (FileInputStream in = new FileInputStream(filePath)) {
-            ParseResult<CompilationUnit> result = parser.parse(in);
-            if (result.isSuccessful() && result.getResult().isPresent()) {
-                CompilationUnit cu = result.getResult().get();
-                String packageName = cu.getPackageDeclaration().map(pd -> pd.getName().toString()).orElse("");
-                cu.findAll(MethodDeclaration.class).forEach(method -> {
-                    String className = findClassName(method);
-                    // 전체 패스를 포함한 메소드 이름 출력
-                    String m_name = packageName + "." + className + "." + method.getName().toString();
-                    method_list.add(m_name);
-                });
-            } else {
-                System.err.println("파싱에 실패했습니다.");
-            }
-        } catch (Exception e) {
-            System.err.println("오류가 발생했습니다: " + e.getMessage());
-            e.printStackTrace();
-        }
-
-
-
-
-
-        for (String me_name : method_list) {
-        	System.out.println(me_name);
-        }*/
 
 	}
 
