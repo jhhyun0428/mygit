@@ -118,18 +118,6 @@ public class MethodParser {
 		return null;  // "java" 폴더를 찾지 못함
 	}
 
-	// 메소드가 선언된 클래스의 이름을 찾는 메소드
-	//	private String findClassName(MethodDeclaration method) {
-	//		Node currentNode = method.getParentNode().orElse(null);
-	//		while (currentNode != null) {
-	//			if (currentNode instanceof ClassOrInterfaceDeclaration) {
-	//				return ((ClassOrInterfaceDeclaration) currentNode).getNameAsString();
-	//			}
-	//			currentNode = currentNode.getParentNode().orElse(null);
-	//		}
-	//		return "";
-	//	}
-
 	// Now parse a file and resolve symbols
 	public void findCalls(String test_path) {
 		try {
