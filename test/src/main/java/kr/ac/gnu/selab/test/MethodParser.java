@@ -57,10 +57,7 @@ public class MethodParser {
         
     	List<String> directories_test = new ArrayList<>();
     	
-    	if (Os == true)
-    		directories_test.add(Path + "/test/framework/src/main/java");
-    	else
-    		directories_test.add(Path + "\\test\\framework\\src\\main\\java");
+    	directories_test.add(Path + File.separator + "test" + File.separator + "framework" + File.separator + "src" + File.separator + "main" + File.separator + "java");
     	
 //    	directories_test.add("C:\\Users\\hyun\\Desktop\\elasticsearch-main\\test\\framework\\src\\main\\java");
 
