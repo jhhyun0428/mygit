@@ -34,7 +34,10 @@ public class MethodParser {
 		MethodParser methodParser = new MethodParser();
 
 		Set<String> javaPaths = new HashSet<>();
-		methodParser.findJavaFiles(new File(path), javaPaths);
+		
+		String startPath = path;
+		
+		methodParser.findJavaFiles(new File(startPath), javaPaths);
 
 		CombinedTypeSolver typeSolver = new CombinedTypeSolver();
 		typeSolver.add(new ReflectionTypeSolver());
