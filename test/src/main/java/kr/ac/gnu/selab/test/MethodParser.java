@@ -1,9 +1,15 @@
 package kr.ac.gnu.selab.test;
-import com.github.javaparser.JavaParser;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
 import com.github.javaparser.ParseProblemException;
-import com.github.javaparser.ParserConfiguration;
 import com.github.javaparser.StaticJavaParser;
-import com.github.javaparser.ParseResult;
 import com.github.javaparser.ast.CompilationUnit;
 import com.github.javaparser.ast.Node;
 import com.github.javaparser.ast.body.ClassOrInterfaceDeclaration;
@@ -17,31 +23,24 @@ import com.github.javaparser.symbolsolver.resolution.typesolvers.CombinedTypeSol
 import com.github.javaparser.symbolsolver.resolution.typesolvers.JavaParserTypeSolver;
 import com.github.javaparser.symbolsolver.resolution.typesolvers.ReflectionTypeSolver;
 
-import kr.ac.gnu.selab.test.PathFinder.ClassCallVisitor;
-
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.HashSet;
-import java.util.Set;
-
   //
 
 public class MethodParser {
 	
-	static String Caller = "";
+	static String Caller = ""; // caller name will be set later
 	
+	static String Path = "/Users/seonahlee/git/elasticsearch";
+//	static String Path = "C:\\Users\\hyun\\Desktop\\elasticsearch-main\\";	
 	
-	static List<String> file_find_paths = findJavaFiles("/Users/seonahlee/git/elasticsearch");
+	static boolean Os = true; // false: windows, true: Mac
+	
+	static List<String> file_find_paths = findJavaFiles(Path);
 	
 	//static List<String> file_find_paths = findJavaFiles("C:\\Users\\hyun\\Desktop\\elasticsearch-main");
 	
     public static void main(String[] args) {
 
-    	String startDirectory = "/Users/seonahlee/git/elasticsearch";  // 시작할 디렉토리 경로 입력
+    	String startDirectory = Path;  // 시작할 디렉토리 경로 입력
 //    	String startDirectory = "C:\\Users\\hyun\\Desktop\\elasticsearch-main";  // 시작할 디렉토리 경로 입력
         Set<String> javaPaths = new HashSet<>();
         findJavaFiles(new File(startDirectory), javaPaths);
@@ -58,7 +57,10 @@ public class MethodParser {
         
     	List<String> directories_test = new ArrayList<>();
     	
-    	directories_test.add("/Users/seonahlee/git/elasticsearch/test/framework/src/main/java");
+    	if (Os == true)
+    		directories_test.add(Path + "/test/framework/src/main/java");
+    	else
+    		directories_test.add(Path + "\\test\\framework\\src\\main\\java");
     	
 //    	directories_test.add("C:\\Users\\hyun\\Desktop\\elasticsearch-main\\test\\framework\\src\\main\\java");
 
