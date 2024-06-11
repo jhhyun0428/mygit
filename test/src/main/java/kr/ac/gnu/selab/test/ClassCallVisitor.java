@@ -20,11 +20,8 @@ public class ClassCallVisitor extends VoidVisitorAdapter<Void> {
 	static List<String> file_find_paths ;
 	static String Caller = ""; // caller name will be set later
 	
-	MethodParser methodParser ;
-	
 	ClassCallVisitor(MethodParser methodParser, String path) {
-		this.methodParser = methodParser;
-		file_find_paths = this.methodParser.findJavaFiles(path);
+		file_find_paths = methodParser.findJavaFiles(path);
 	}
 
 	@Override
@@ -48,16 +45,43 @@ public class ClassCallVisitor extends VoidVisitorAdapter<Void> {
 			String qualifiedName = n.resolve().getQualifiedSignature();
 			//                if (!qualifiedName.contains("java.lang"))
 			System.out.println(Caller + ", " + qualifiedName);
-			String Caller_f = methodParser.buildJavaFileName(Caller);
-			System.out.println(Caller_f + " , " + methodParser.findFilePath(file_find_paths, Caller_f));
-			String Callee_f = methodParser.buildJavaFileName(qualifiedName);
-			System.out.println(Callee_f+ " , " + methodParser.findFilePath(file_find_paths, Callee_f));
+			String Caller_f = buildJavaFileName(Caller);
+			System.out.println(Caller_f + " , " + findFilePath(file_find_paths, Caller_f));
+			String Callee_f = buildJavaFileName(qualifiedName);
+			System.out.println(Callee_f+ " , " + findFilePath(file_find_paths, Callee_f));
 
 		} catch (Exception e) {
 			//                System.out.println("==> Could not resolve method call: " + n);
 		}
 
 		super.visit(n, arg);
+	}
+	
+	public String buildJavaFileName(String originalString) {
+		// 문자열을 '.'을 기준으로 분할
+		String regex = "\\([^)]*\\)";
+		String stringWithoutParentheses = originalString.replaceAll(regex, "");
+		String[] parts = stringWithoutParentheses.split("\\.");
+
+		// 끝에서 두 번째 단어 뒤에 ".java"를 붙여서 반환
+		if (parts.length >= 2) {
+			StringBuilder javaFileNameBuilder = new StringBuilder();
+			javaFileNameBuilder.append(parts[parts.length - 2]);
+			javaFileNameBuilder.append(".java");
+			return javaFileNameBuilder.toString();
+		} else {
+			// 분할된 단어의 개수가 2보다 작을 경우 예외 처리
+			throw new IllegalArgumentException("Invalid input string");
+		}
+	}
+	
+	public String findFilePath(List<String> filePaths, String fileName) {
+		for (String filePath : filePaths) {
+			if (filePath.endsWith(fileName)) {
+				return filePath;
+			}
+		}
+		return null; // 파일을 찾지 못한 경우
 	}
 }
 

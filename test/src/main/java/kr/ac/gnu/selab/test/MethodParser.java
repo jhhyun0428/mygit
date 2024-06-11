@@ -160,32 +160,4 @@ public class MethodParser {
 		}
 	}
 
-	public String findFilePath(List<String> filePaths, String fileName) {
-		for (String filePath : filePaths) {
-			if (filePath.endsWith(fileName)) {
-				return filePath;
-			}
-		}
-		return null; // 파일을 찾지 못한 경우
-	}
-
-	public String buildJavaFileName(String originalString) {
-		// 문자열을 '.'을 기준으로 분할
-		String regex = "\\([^)]*\\)";
-		String stringWithoutParentheses = originalString.replaceAll(regex, "");
-		String[] parts = stringWithoutParentheses.split("\\.");
-
-		// 끝에서 두 번째 단어 뒤에 ".java"를 붙여서 반환
-		if (parts.length >= 2) {
-			StringBuilder javaFileNameBuilder = new StringBuilder();
-			javaFileNameBuilder.append(parts[parts.length - 2]);
-			javaFileNameBuilder.append(".java");
-			return javaFileNameBuilder.toString();
-		} else {
-			// 분할된 단어의 개수가 2보다 작을 경우 예외 처리
-			throw new IllegalArgumentException("Invalid input string");
-		}
-	}
-
-
 }
