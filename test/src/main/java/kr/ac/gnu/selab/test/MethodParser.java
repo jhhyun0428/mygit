@@ -32,12 +32,13 @@ public class MethodParser {
 	public static void main(String[] args) {
 
 		MethodParser methodParser = new MethodParser();
+		JavaFolderFinder javaFolderFinder = new JavaFolderFinder();
 
 		Set<String> javaPaths = new HashSet<>();
 		
 		String startPath = path;
 		
-		methodParser.findJavaFolders(new File(startPath), javaPaths); // javaPath
+		javaFolderFinder.findJavaFolders(new File(startPath), javaPaths); // javaPath
 
 		// 결과 출력
 		List<String> sortedPaths = new ArrayList<>(javaPaths); // javaPath, again
@@ -66,24 +67,6 @@ public class MethodParser {
 
 	}
 
-	public void findJavaFolders(File directory, Set<String> javaPaths) {
-		File[] files = directory.listFiles();
-		if (files == null) {
-			return;
-		}
-
-		for (File file : files) {
-			if (file.isDirectory()) {
-				findJavaFolders(file, javaPaths); // recursive
-			} else if (file.getName().endsWith(".java")) {
-				String pathToJavaFolder = this.findNearestJavaFolder(file.getParentFile());
-				if (pathToJavaFolder != null) {
-					javaPaths.add(pathToJavaFolder); // add
-				}
-			}
-		}
-	}
-
 	public List<String> findJavaFiles(String folderPath) {
 		List<String> javaPaths = new ArrayList<>();
 		findJavaFilesInFolder(new File(folderPath), javaPaths);
@@ -109,16 +92,6 @@ public class MethodParser {
 			}
 		}
 
-	}
-
-	private String findNearestJavaFolder(File directory) {
-		while (directory != null) {
-			if (directory.getName().equalsIgnoreCase("java")) {
-				return directory.getPath();
-			}
-			directory = directory.getParentFile();
-		}
-		return null;  // "java" 폴더를 찾지 못함
 	}
 
 	// Now parse a file and resolve symbols
