@@ -26,8 +26,8 @@ import com.github.javaparser.symbolsolver.resolution.typesolvers.ReflectionTypeS
 
 public class MethodParser {
 
-	static String path = "/Users/seonahlee/git/elasticsearch";
-	//	static String Path = "C:\\Users\\hyun\\Desktop\\elasticsearch-main";	
+//	static String path = "/Users/seonahlee/git/elasticsearch";
+		static String path = "C:\\Users\\hyun\\Desktop\\elasticsearch-main";	
 
 	public static void main(String[] args) {
 
