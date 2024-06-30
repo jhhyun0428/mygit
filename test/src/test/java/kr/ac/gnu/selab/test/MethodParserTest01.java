@@ -19,11 +19,10 @@ public class MethodParserTest01 {
 		
 		javaFolderFinder.findJavaFolders(new File(startPath), javaPaths); // javaPath
 		
-		System.out.println(javaPaths.size());
-		
 		for (String javaPath: javaPaths) {
 			System.out.println(javaPath);
 		}
+		System.out.println(javaPaths.size());
 	}
 
 }

@@ -15,10 +15,19 @@ public class JavaFolderFinder {
 			if (file.isDirectory()) {
 				findJavaFolders(file, javaPaths); // recursive
 			} else if (file.getName().endsWith(".java")) {
+//				System.out.println(file.getName());
+				
 				String pathToJavaFolder = this.findNearestJavaFolder(file.getParentFile());
+				
 				if (pathToJavaFolder != null) {
 					javaPaths.add(pathToJavaFolder); // add
+//					System.out.println(pathToJavaFolder.toString());
+					return;
 				}
+//				else {
+//					System.out.println("null");
+//					return;
+//				}
 			}
 		}
 	}

@@ -12,8 +12,11 @@ class MethodParserTest {
 	@Test
 	void testFindJavaFiles() {
 		
-		String path = "C:\\Users\\user\\Desktop\\elasticsearch-main";
-		String pathAfter = "\\plugins\\mapper-size\\src\\internalClusterTest\\java\\org\\elasticsearch\\index\\mapper\\size";
+		String path = "/Users/seonahlee/git/elasticsearch";
+		String pathAfter = "/plugins/mapper-size/src/internalClusterTest/java/org/elasticsearch/index/mapper/size";
+		
+//		String path = "C:\\Users\\user\\Desktop\\elasticsearch-main";
+//		String pathAfter = "\\plugins\\mapper-size\\src\\internalClusterTest\\java\\org\\elasticsearch\\index\\mapper\\size";
 		
 		MethodParser methodParser = new MethodParser();
 		List<String> testJavaFolder = new ArrayList<>();
