@@ -1,9 +1,43 @@
 package kr.ac.gnu.selab.test;
 
 import java.io.File;
+import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
+import com.github.javaparser.StaticJavaParser;
+import com.github.javaparser.symbolsolver.JavaSymbolSolver;
+import com.github.javaparser.symbolsolver.resolution.typesolvers.CombinedTypeSolver;
+import com.github.javaparser.symbolsolver.resolution.typesolvers.JavaParserTypeSolver;
+import com.github.javaparser.symbolsolver.resolution.typesolvers.ReflectionTypeSolver;
+
 public class JavaFolderFinder {
+	
+	String path;
+	
+	JavaFolderFinder(String path) {
+		this.path = path;
+	}
+	
+	public void analyzeJavaFolders() {
+		Set<String> javaPaths = new HashSet<>();		
+		String startPath = path;
+		this.findJavaFolders(new File(startPath), javaPaths); // javaPath
+
+		// 결과 출력
+		List<String> sortedPaths = new ArrayList<>(javaPaths); // javaPath, again
+		sortedPaths.sort(String::compareTo);
+
+		//add source directory to CombinedTypeSolver
+		CombinedTypeSolver typeSolver = new CombinedTypeSolver();
+		typeSolver.add(new ReflectionTypeSolver());
+		for (String path : sortedPaths) {
+			typeSolver.add(new JavaParserTypeSolver(Paths.get(path)));
+		}
+		StaticJavaParser.getParserConfiguration().setSymbolResolver(new JavaSymbolSolver(typeSolver));
+	}
 	
 	public void findJavaFolders(File directory, Set<String> javaPaths) {
 		File[] files = directory.listFiles();

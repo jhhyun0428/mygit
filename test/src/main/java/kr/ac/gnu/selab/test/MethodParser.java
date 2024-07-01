@@ -27,91 +27,20 @@ import com.github.javaparser.symbolsolver.resolution.typesolvers.ReflectionTypeS
 public class MethodParser {
 
 	static String path = "/Users/seonahlee/git/elasticsearch";
-//		static String path = "C:\\Users\\hyun\\Desktop\\elasticsearch-main";	
+	//		static String path = "C:\\Users\\hyun\\Desktop\\elasticsearch-main";	
 
 	public static void main(String[] args) {
 
 		MethodParser methodParser = new MethodParser();
-		JavaFolderFinder javaFolderFinder = new JavaFolderFinder();
-
-		Set<String> javaPaths = new HashSet<>();
-		
-		String startPath = path;
-		
-		javaFolderFinder.findJavaFolders(new File(startPath), javaPaths); // javaPath
-
-		// 결과 출력
-		List<String> sortedPaths = new ArrayList<>(javaPaths); // javaPath, again
-		sortedPaths.sort(String::compareTo);
-		
-		CombinedTypeSolver typeSolver = new CombinedTypeSolver();
-		typeSolver.add(new ReflectionTypeSolver());
-		for (String path : sortedPaths) {
-			typeSolver.add(new JavaParserTypeSolver(Paths.get(path)));
-		}
-
-		List<String> test_directories = new ArrayList<>();
-
-		test_directories.add(Paths.get(path, "test", "framework", "src", "main", "java").toString());
-
-		StaticJavaParser.getParserConfiguration().setSymbolResolver(new JavaSymbolSolver(typeSolver));
+		JavaFolderFinder javaFolderFinder = new JavaFolderFinder(path);
+		TestFileFinder testFileFinder = new TestFileFinder(path);
 
 
-		for (String test_file_paths : test_directories) {
-			List<String> file_paths =methodParser.findJavaFiles(test_file_paths); // jave files???
-			for (String file_path : file_paths) {
-				methodParser.findCalls(file_path);
-			}
+		//add source directory to CombinedTypeSolver
+		javaFolderFinder.analyzeJavaFolders();		
 
-		}
+		//find and add test files
+		testFileFinder.analyzeTestFiles();
 
 	}
-
-	public List<String> findJavaFiles(String folderPath) {
-		List<String> javaPaths = new ArrayList<>();
-		findJavaFilesInFolder(new File(folderPath), javaPaths);
-		return javaPaths;
-	}
-
-	private void findJavaFilesInFolder(File directory, List<String> javaPaths) {
-		// 폴더 내의 모든 파일과 하위 폴더 확인
-		File[] files = directory.listFiles();
-		if (files == null) {
-			return;
-		}
-
-		for (File file : files) {
-			if (file.isDirectory()) {
-				// 하위 폴더에 대해 재귀적으로 호출
-				findJavaFilesInFolder(file, javaPaths);
-			} else {
-				// Java 파일인 경우 리스트에 추가
-				if (file.getName().endsWith(".java")) {
-					javaPaths.add(file.getAbsolutePath());
-				}
-			}
-		}
-
-	}
-
-	// Now parse a file and resolve symbols
-	public void findCalls(String test_path) {
-		try {
-			CompilationUnit cu = StaticJavaParser.parse(new FileInputStream(test_path));
-			// Use visitors or other methods to analyze the code and resolve symbols
-			cu.accept(new ClassCallVisitor(this, path), null);
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		} catch(UnsolvedSymbolException e) {
-			System.out.println("error");
-		} catch (ParseProblemException e) {
-			System.out.println("error");
-		} catch (IllegalArgumentException e) {
-			System.out.println("error");
-		}
-		catch (UnsupportedOperationException e) { //added an exception
-			System.out.println("error");
-		}
-	}
-
 }

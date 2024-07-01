@@ -18,9 +18,11 @@ class MethodParserTest {
 //		String path = "C:\\Users\\user\\Desktop\\elasticsearch-main";
 //		String pathAfter = "\\plugins\\mapper-size\\src\\internalClusterTest\\java\\org\\elasticsearch\\index\\mapper\\size";
 		
-		MethodParser methodParser = new MethodParser();
+		TestFileFinder fileFinder = new TestFileFinder(path);
+		
 		List<String> testJavaFolder = new ArrayList<>();
-		testJavaFolder = methodParser.findJavaFiles(path+pathAfter);
+		testJavaFolder = fileFinder.findJavaFiles(path+pathAfter);
+		System.out.println(testJavaFolder);
 		
 		assertEquals(1, testJavaFolder.size());//폴더 안에 파일 하나.
 	}

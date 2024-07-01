@@ -20,8 +20,8 @@ public class ClassCallVisitor extends VoidVisitorAdapter<Void> {
 	static List<String> file_paths ;
 	static String Caller = ""; // caller name will be set later
 	
-	ClassCallVisitor(MethodParser methodParser, String path) {
-		file_paths = methodParser.findJavaFiles(path);
+	ClassCallVisitor(TestFileFinder fileFinder, String path) {
+		file_paths = fileFinder.findJavaFiles(path);
 	}
 
 	@Override
