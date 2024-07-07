@@ -1,8 +1,10 @@
 package kr.ac.gnu.selab.test;
 
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileWriter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,6 +21,7 @@ public class ClassCallVisitor extends VoidVisitorAdapter<Void> {
 	
 	static List<String> file_paths ;
 	static String Caller = ""; // caller name will be set later
+	static String csv = "C:\\Users\\user\\Desktop\\parsing_result.csv";	
 	
 	ClassCallVisitor(TestFileFinder fileFinder, String path) {
 		file_paths = fileFinder.findJavaFiles(path);
@@ -41,14 +44,25 @@ public class ClassCallVisitor extends VoidVisitorAdapter<Void> {
 	public void visit(MethodCallExpr n, Void arg) {
 		//            n.getScope().ifPresent(scope -> System.out.println("Method Call: " + scope + "." + n.getName()));
 
-		try {
+		try (BufferedWriter bw = new BufferedWriter(new java.io.FileWriter(csv, true))) {
 			String qualifiedName = n.resolve().getQualifiedSignature();
 			//                if (!qualifiedName.contains("java.lang"))
-			System.out.println(Caller + ", " + qualifiedName);
 			String Caller_f = buildJavaFileName(Caller);
-			System.out.println(Caller_f + " , " + findFilePath(file_paths, Caller_f));
 			String Callee_f = buildJavaFileName(qualifiedName);
-			System.out.println(Callee_f+ " , " + findFilePath(file_paths, Callee_f));
+			String Caller_path = findFilePath(file_paths, Caller_f);
+			String Callee_path = findFilePath(file_paths, Callee_f);
+
+			if (Caller_path != null && Callee_path != null && Caller.startsWith("org.elasticsearch") && qualifiedName.startsWith("org.elasticsearch")) {
+				
+				String w_data = "\"" + Caller + "\"" + "," + "\"" + qualifiedName + "\"" + "," + "\"" + Caller_path + "\"" + "," + "\"" + Callee_path + "\"";
+				bw.write(w_data);
+				bw.newLine();
+				
+				//System.out.println(Caller + ", " + qualifiedName);
+				//System.out.println(Caller_f + " , " + Caller_path);
+				//System.out.println(Callee_f+ " , " + Callee_path);
+			}
+			
 
 		} catch (Exception e) {
 			//                System.out.println("==> Could not resolve method call: " + n);

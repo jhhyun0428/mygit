@@ -14,6 +14,7 @@ import com.github.javaparser.resolution.UnsolvedSymbolException;
 public class TestFileFinder {
 	
 	String path;
+	static int i = 0;
 	
 	TestFileFinder(String path) {
 		this.path = path;
@@ -28,6 +29,11 @@ public class TestFileFinder {
 			List<String> file_paths = this.findJavaFiles(test_file_paths); // jave files???
 			for (String file_path : file_paths) {
 				this.findCalls(file_path);
+				i+=1;
+				
+				if (i%5 == 0) {
+					System.out.println(i);
+				}
 			}
 		}
 	}
@@ -41,14 +47,14 @@ public class TestFileFinder {
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		} catch(UnsolvedSymbolException e) {
-			System.out.println("error");
+			System.out.print("");
 		} catch (ParseProblemException e) {
-			System.out.println("error");
+			System.out.print("");
 		} catch (IllegalArgumentException e) {
-			System.out.println("error");
+			System.out.print("");
 		}
 		catch (UnsupportedOperationException e) { //added an exception
-			System.out.println("error");
+			System.out.print("");
 		}
 	}
 	

@@ -2,6 +2,7 @@ package kr.ac.gnu.selab.test;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -26,21 +27,20 @@ import com.github.javaparser.symbolsolver.resolution.typesolvers.ReflectionTypeS
 
 public class MethodParser {
 
-	static String path = "/Users/seonahlee/git/elasticsearch";
-	//		static String path = "C:\\Users\\hyun\\Desktop\\elasticsearch-main";	
+	//static String path = "/Users/seonahlee/git/elasticsearch";
+	static String path = "C:\\Users\\user\\Desktop\\elasticsearch-main";	
 
 	public static void main(String[] args) {
 
 		MethodParser methodParser = new MethodParser();
 		JavaFolderFinder javaFolderFinder = new JavaFolderFinder(path);
 		TestFileFinder testFileFinder = new TestFileFinder(path);
-
-
+		
 		//add source directory to CombinedTypeSolver
 		javaFolderFinder.analyzeJavaFolders();		
 
 		//find and add test files
 		testFileFinder.analyzeTestFiles();
-
+		
 	}
 }

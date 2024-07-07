@@ -7,7 +7,7 @@ import java.util.Set;
 public class MethodParserTest01 {
 	
 	public static void main(String[] args) {
-		
+		/**
 	    String path = "/Users/seonahlee/git/elasticsearch";
 		
 		MethodParser methodParser = new MethodParser();
@@ -22,7 +22,7 @@ public class MethodParserTest01 {
 		for (String javaPath: javaPaths) {
 			System.out.println(javaPath);
 		}
-		System.out.println(javaPaths.size());
+		System.out.println(javaPaths.size());**/
 	}
 
 }
